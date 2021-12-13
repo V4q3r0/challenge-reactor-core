@@ -1,7 +1,10 @@
 package com.example.demo;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collation = "player")
 public class Player {
-    public int id;
+    public String id;
     public String name;
     public int age;
     public String icon;
@@ -10,11 +13,11 @@ public class Player {
     public int games;
     public String club;
 
-    public Player(){
+    public Player(int i, String string, int age, String icon, String national, int winners, int games, String club){
 
     }
 
-    public Player(int id, String name, int age, String icon, String national, int winners, int games, String club) {
+    public Player(String id, String name, int age, String icon, String national, int winners, int games, String club) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -25,11 +28,11 @@ public class Player {
         this.club = club;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -87,5 +90,9 @@ public class Player {
 
     public void setClub(String club) {
         this.club = club;
+    }
+
+    public String toString(){
+        return "name: "+this.name;
     }
 }

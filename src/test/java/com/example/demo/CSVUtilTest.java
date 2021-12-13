@@ -1,8 +1,10 @@
 package com.example.demo;
 
+import com.example.demo.services.PlayerService;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -16,6 +18,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class CSVUtilTest {
+
+    @Autowired
+    PlayerService service;
 
     @Test
     void converterData(){
@@ -42,7 +47,7 @@ public class CSVUtilTest {
     }
 
 
-    @Test
+    /*@Test
     void reactive_filtrarJugadoresMayoresA35(){
         List<Player> list = CsvUtilFile.getPlayers();
         Flux<Player> listFlux = Flux.fromStream(list.parallelStream()).cache();
@@ -61,8 +66,6 @@ public class CSVUtilTest {
                 .collectMultimap(Player::getClub);
 
         assert listFilter.block().size() == 322;
-    }
-
-
+    }*/
 
 }

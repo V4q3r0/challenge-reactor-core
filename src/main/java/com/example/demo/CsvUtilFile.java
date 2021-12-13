@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Optional;
 
 public class CsvUtilFile {
+
+
     private CsvUtilFile(){}
 
     public static List<Player> getPlayers(){
@@ -20,7 +22,7 @@ public class CsvUtilFile {
             registers.forEach(strings -> list.add(new Player(
                     Integer.parseInt(strings[0].trim()),
                     strings[1],
-                    Integer.parseInt(Optional.of(strings[2].trim()).filter(h -> !h.isBlank()).orElse("0")),
+                    Integer.parseInt(Optional.of(strings[2].trim()).filter(h -> !h.isEmpty()).orElse("0")),
                     strings[3],
                     strings[4],
                     Integer.parseInt(strings[5].trim()),
@@ -34,4 +36,5 @@ public class CsvUtilFile {
             throw new IllegalArgumentException(e.getMessage());
         }
     }
+
 }
