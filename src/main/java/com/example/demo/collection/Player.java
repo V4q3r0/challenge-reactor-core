@@ -1,9 +1,9 @@
-package com.example.demo;
+package com.example.demo.collection;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collation = "player")
+@Document(collection = "player")
 public class Player {
     @Id
     public String id;

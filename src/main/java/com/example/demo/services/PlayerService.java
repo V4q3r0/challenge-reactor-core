@@ -1,11 +1,12 @@
 package com.example.demo.services;
 
-import com.example.demo.Player;
+import com.example.demo.collection.Player;
 import com.example.demo.repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
+
+import java.util.Objects;
 
 @Service
 public class PlayerService {
@@ -18,15 +19,21 @@ public class PlayerService {
     }
 
     public Flux<Player> getPlayersByAge(){
-        return getPlayers().filter(player -> player.age >= 35);
+        return getPlayers()
+                .filter(player -> Objects.nonNull(player.getAge()))
+                .filter(player -> player.getAge() >= 35);
     }
 
     public Flux<Player> getPlayerAndFilterByClub(String club){
-        return getPlayers().filter(player -> player.club.equals(club));
+        return getPlayers()
+                .filter(player -> Objects.nonNull(player.getClub()))
+                .filter(player -> player.getClub().equals(club));
     }
 
     public Flux<Player> getPlayerByNational(String national){
-        return getPlayers().filter(player -> player.national.equals(national));
+        return getPlayers()
+                .filter(player -> Objects.nonNull(player.getNational()))
+                .filter(player -> player.getNational().equals(national));
     }
 
 }
