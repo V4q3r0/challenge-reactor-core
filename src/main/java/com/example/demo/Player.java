@@ -1,9 +1,11 @@
 package com.example.demo;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collation = "player")
 public class Player {
+    @Id
     public String id;
     public String name;
     public int age;
@@ -12,10 +14,6 @@ public class Player {
     public int winners;
     public int games;
     public String club;
-
-    public Player(int i, String string, int age, String icon, String national, int winners, int games, String club){
-
-    }
 
     public Player(String id, String name, int age, String icon, String national, int winners, int games, String club) {
         this.id = id;
@@ -90,9 +88,5 @@ public class Player {
 
     public void setClub(String club) {
         this.club = club;
-    }
-
-    public String toString(){
-        return "name: "+this.name;
     }
 }

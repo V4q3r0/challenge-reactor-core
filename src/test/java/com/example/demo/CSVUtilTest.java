@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.test.StepVerifier;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -49,23 +50,11 @@ public class CSVUtilTest {
 
     /*@Test
     void reactive_filtrarJugadoresMayoresA35(){
-        List<Player> list = CsvUtilFile.getPlayers();
-        Flux<Player> listFlux = Flux.fromStream(list.parallelStream()).cache();
-        Mono<Map<String, Collection<Player>>> listFilter = listFlux
-                .filter(player -> player.age >= 35)
-                .map(player -> {
-                    player.name = player.name.toUpperCase(Locale.ROOT);
-                    return player;
-                })
-                .buffer(100)
-                .flatMap(playerA -> listFlux
-                         .filter(playerB -> playerA.stream()
-                                 .anyMatch(a ->  a.club.equals(playerB.club)))
-                )
-                .distinct()
-                .collectMultimap(Player::getClub);
+        var players = service.getPlayersByAge();
 
-        assert listFilter.block().size() == 322;
+        StepVerifier.create(players)
+                .expectErrorMessage("No existen jugadores")
+                .verify();
     }*/
 
 }
